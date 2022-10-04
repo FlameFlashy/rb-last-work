@@ -9,7 +9,6 @@ variable "resource_group_name_prefix" {
 }
 
 variable "userdata_file" {
-  type = string
-
+  type    = string
   default = "install.sh"
 }
