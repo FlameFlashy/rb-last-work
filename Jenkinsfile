@@ -13,7 +13,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "================== start building image =================="
-                dir ('grafana/') {
+                dir ('grafana') {
                 	sh 'docker-compose up -d'
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
         stage("terraform init cosmoDB") {
             steps {
                 echo "================== start terraform init =================="
-                dir ('terraform-cosmoDB/') {
+                dir ('terraform-cosmoDB') {
                     sh 'terraform init'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         stage("terraform plan cosmoDB") {
             steps {
                 echo "================== start terraform plan cosmoDB =================="
-                dir ('terraform-cosmoDB/') {
+                dir ('terraform-cosmoDB') {
                     sh 'terraform plan -out cosmo.tfplan'
                 }
             }
