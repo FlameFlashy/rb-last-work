@@ -50,14 +50,9 @@ resource "azurerm_cosmosdb_account" "db" {
   }
 }
 
-data "azurerm_cosmosdb_account" "db" {
-  name                = "sokolov-cosmos-db"
-  resource_group_name = "rb-rare-teal"
-}
-
 resource "azurerm_cosmosdb_mongo_database" "db" {
   name                = "tfex-cosmos-mongo-db"
-  resource_group_name = data.azurerm_cosmosdb_account.db.resource_group_name
-  account_name        = data.azurerm_cosmosdb_account.db.name
+  resource_group_name = azurerm_cosmosdb_account.db.resource_group_name
+  account_name        = azurerm_cosmosdb_account.db.name
   throughput          = 400
 }
