@@ -10,14 +10,6 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("create docker grafana container") {
-            steps {
-                echo "================== start up container =================="
-                dir ("grafana") {
-                    sh "docker-compose up -d"
-                }
-            }
-        }
         stage("terraform init cosmoDB") {
             steps {
                 echo "================== start terraform init =================="
@@ -39,6 +31,14 @@ pipeline {
                 echo "================== start terraform apply cosmoDB =================="
                 dir ('terraform-cosmoDB') {
                     sh 'terraform apply cosmo.tfplan'
+                }
+            }
+        }
+        stage("create docker grafana container") {
+            steps {
+                echo "================== start up container =================="
+                dir ("grafana") {
+                    sh "docker-compose up -d"
                 }
             }
         }
