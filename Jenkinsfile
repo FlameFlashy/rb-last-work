@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "================== start building image =================="
                 dir ('grafana/') {
-                	sh 'sudo docker-compose up -d'
+                	sh 'docker-compose up -d'
                 }
             }
         }
