@@ -1,0 +1,10 @@
+version: "2.3"
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:8.5.3-ubuntu
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - grafana-configs:/etc/grafana
