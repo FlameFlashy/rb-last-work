@@ -8,3 +8,6 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
       - grafana-configs:/etc/grafana
+volumes:
+  grafana-data:
+  grafana-configs:
