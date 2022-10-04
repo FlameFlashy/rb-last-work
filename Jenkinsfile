@@ -10,11 +10,11 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("create docker image") {
+        stage("create docker grafana container") {
             steps {
-                echo "================== start building image =================="
-                dir ('grafana') {
-                	sh 'docker-compose up -d'
+                echo "================== start up container =================="
+                dir ("grafana") {
+                    sh "docker-compose up -d"
                 }
             }
         }
